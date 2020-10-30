@@ -1,4 +1,4 @@
-package com.spinthebo.buttle;
+package com.spinthe.buttle;
 
 import org.junit.Test;
 
