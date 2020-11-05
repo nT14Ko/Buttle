@@ -10,8 +10,8 @@ import android.widget.ImageView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
-    private ImageView bottle;
+public class Game extends AppCompatActivity {
+    private ImageView butilka;
     private Random random = new Random();
     private int lastDir;
     private boolean spinning;
@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottle = findViewById(R.id.bottle);
+        butilka = findViewById(R.id.bottle);
     }
 
-    public void spinBottle(View v) {
+    public void spin(View v) {
         if (!spinning) {
-            int newDir = random.nextInt(1800);
-            float pivotX = bottle.getWidth() / 2.0f;
-            float pivotY = bottle.getHeight() / 2.0f;
+            int newDir = random.nextInt(2400);
+            float pivotX = butilka.getWidth() / 2.0f;
+            float pivotY = butilka.getHeight() / 2.0f;
             Animation rotate = new RotateAnimation(lastDir, newDir, pivotX, pivotY);
             rotate.setDuration(2500);
             rotate.setFillAfter(true);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             lastDir = newDir;
-            bottle.startAnimation(rotate);
+            butilka.startAnimation(rotate);
         }
     }
 }
