@@ -25,7 +25,7 @@ public class Game extends AppCompatActivity {
 
     public void spin(View v) {
         if (!spinning) {
-            int newDir = random.nextInt(2400);
+            int newDir = random.nextInt(3000);
             float pivotX = butilka.getWidth() / 2.0f;
             float pivotY = butilka.getHeight() / 2.0f;
             Animation rotate = new RotateAnimation(lastDir, newDir, pivotX, pivotY);
