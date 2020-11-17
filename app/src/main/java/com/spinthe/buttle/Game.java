@@ -11,10 +11,13 @@ import android.widget.ImageView;
 import java.util.Random;
 
 public class Game extends AppCompatActivity {
+
     private ImageView butilka;
-    private Random random = new Random();
+    private final Random random = new Random();
     private int lastDir;
     private boolean spinning;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "560895785603",
+    "firebase_url": "https://buttle-5e411.firebaseio.com",
+    "project_id": "buttle-5e411",
+    "storage_bucket": "buttle-5e411.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560895785603:android:ca3582e56fc2fbaaf9b9b6",
+        "android_client_info": {
+          "package_name": "com.spinthe.buttle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560895785603-tbo54hvonh0m7m2gj5pm5hkg2s9fbtg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyIWar_W9aGUl8H2u1eY3JLO_LR2ZwHfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560895785603-tbo54hvonh0m7m2gj5pm5hkg2s9fbtg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
