@@ -13,4 +13,11 @@
         android:src="@drawable/bottle"
         android:layout_centerInParent="true"
         android:onClick="spin"/>
+
+    <Button
+        android:id="@+id/btn_pp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/ic_menu_info_details"
+        android:onClick="privacy"/>
 </RelativeLayout>

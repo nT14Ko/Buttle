@@ -38,16 +38,7 @@ public class SplashScreen extends AppCompatActivity {
 
         remoteConfig.setDefaultsAsync(R.xml.network_security_config);
 
-        timer = new Timer();
-        timerTask = new TimerTask() {
-            public void run() {
-                Intent intent = new Intent(SplashScreen.this, Game.class);
-                startActivity(intent);
-                finish();
-
-            }
-        };
-        timer.schedule(timerTask, 4000);
+        vidget();
 
         getData();
     }
@@ -58,10 +49,26 @@ public class SplashScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isComplete()){
                     String check = remoteConfig.getString("pochemytak");
-                    if(!check.equals("false"))
+                    
+                    if(!check.equals("false") && check != null) {
                         Toast.makeText(SplashScreen.this, "Congratulation", Toast.LENGTH_SHORT).show();
+                    } else
+                        vidget();
                 }
             }
         });
+    }
+
+    private void vidget(){
+        timer = new Timer();
+        timerTask = new TimerTask() {
+            public void run() {
+                Intent intent = new Intent(SplashScreen.this, Game.class);
+                startActivity(intent);
+                finish();
+
+            }
+        };
+        timer.schedule(timerTask, 4000);
     }
 }

@@ -2,6 +2,7 @@ package com.spinthe.buttle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -50,5 +51,11 @@ public class Game extends AppCompatActivity {
             lastDir = newDir;
             butilka.startAnimation(rotate);
         }
+    }
+
+    public void privacy(View view) {
+        Intent intent = new Intent(this, PrivacyPolicy.class);
+        intent.putExtra("privpo", "privpol");
+        startActivity(intent);
     }
 }
