@@ -49,11 +49,10 @@ public class SplashScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isComplete()){
                     String check = remoteConfig.getString("pochemytak");
-                    
+
                     if(!check.equals("false") && check != null) {
                         Toast.makeText(SplashScreen.this, "Congratulation", Toast.LENGTH_SHORT).show();
-                    } else
-                        vidget();
+                    }
                 }
             }
         });
