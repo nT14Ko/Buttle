@@ -1,3 +1,18 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.9, 0.99.99]'
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
@@ -9,8 +24,10 @@ android {
         applicationId "com.spinthe.buttle"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 5
-        versionName "3.2"
+        versionCode 6
+        versionName "3.3"
+        manifestPlaceholders = [onesignal_app_id: "e72cb397-239e-43d5-90b2-4e39cd77bf65",
+                                onesignal_google_project_number: "REMOTE"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,11 +44,12 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'com.google.firebase:firebase-config:20.0.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    implementation platform('com.google.firebase:firebase-bom:26.1.0')
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.21'
+    implementation 'com.onesignal:OneSignal:3.15.4'
+    implementation 'com.facebook.android:facebook-applinks:5.15.3'
+    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
+    implementation 'com.google.firebase:firebase-firestore:22.0.0'
 }
