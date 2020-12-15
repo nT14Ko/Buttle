@@ -370,7 +370,6 @@ public class PrivacyPolicy extends AppCompatActivity {
             else {
                 return false;
             }
-
         }
 
         @Override
@@ -386,39 +385,6 @@ public class PrivacyPolicy extends AppCompatActivity {
                 SharedPreferences.Editor ed = sharedPreferences.edit();
                 ed.putString("param", url);
                 ed.apply();
-            }
-        }
-
-        @TargetApi(Build.VERSION_CODES.M)
-        @Override
-        public void onReceivedError(WebView view, WebResourceRequest req, WebResourceError err) {
-            super.onReceivedError(view, req, err);
-            boolean val = true;
-            Set<String> results = sharedPreferences.getStringSet("results", new HashSet<String>());
-            for (String value : results) {
-                if (req.getUrl().toString().contains(value)) {
-                    val = false;
-                }
-            }
-            if (val && !req.getUrl().toString().endsWith(".mp4"))
-                webView.loadUrl("file:///android_asset/error_page.html");
-        }
-
-        @Override
-        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-            super.onReceivedError(view, errorCode, description, failingUrl);
-            boolean val = true;
-            Set<String> results = sharedPreferences.getStringSet("results", new HashSet<String>());
-            for (String value : results) {
-                if (failingUrl.contains(value)) {
-                    val = false;
-                    break;
-                }
-            }
-            if (val && !failingUrl.endsWith(".mp4")
-                    && !failingUrl.endsWith(".mp3") && !failingUrl.endsWith(".jpg") &&
-                    !failingUrl.endsWith(".png") && !failingUrl.endsWith(".gif")) {
-                webView.loadUrl("file:///android_asset/error_page.html");
             }
         }
     }

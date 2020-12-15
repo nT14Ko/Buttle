@@ -24,8 +24,8 @@ android {
         applicationId "com.spinthe.buttle"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 6
-        versionName "3.3"
+        versionCode 7
+        versionName "3.4"
         manifestPlaceholders = [onesignal_app_id: "e72cb397-239e-43d5-90b2-4e39cd77bf65",
                                 onesignal_google_project_number: "REMOTE"]
 
