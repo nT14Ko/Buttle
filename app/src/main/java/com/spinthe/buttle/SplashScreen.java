@@ -162,8 +162,8 @@ public class SplashScreen extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             if (secparam != null && response != null && !secparam.equals("")) {
-                                                String test = App.getAppsFlyerId();
                                                 String mrep = deeplink.length() >= 7 ? (secparam + deeplink.substring(12)) : (secparam);
+
                                                 Intent intent = new Intent(SplashScreen.this, PrivacyPolicy.class);
                                                 sharedPreferences.edit().putString("param", mrep).apply();
                                                 response = "";
@@ -194,6 +194,7 @@ public class SplashScreen extends AppCompatActivity {
                                                 Intent intent = new Intent(SplashScreen.this, PrivacyPolicy.class);
                                                 sharedPreferences.edit().putString("param", mrep).apply();
                                                 startActivity(intent);
+                                                response = "";
                                                 finish();
                                             } else {
                                                 Intent intent = new Intent(SplashScreen.this, Game.class);
