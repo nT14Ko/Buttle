@@ -7,4 +7,5 @@
         <exclude
             domain="sharedpref"
             path="com.google.android.gms.measurement.prefs.xml"/>
+        <exclude domain="sharedpref" path="appsflyer-data"/>
     </full-backup-content>

